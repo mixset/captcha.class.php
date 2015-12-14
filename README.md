@@ -10,7 +10,7 @@ How class is built?
 Class has 6 method and 2 properities. 
 
 Methods:
-- `__construct($config)` inits font using in captcha image 
+- `__construct()` inits font using in captcha image 
 - `generateCode()` generate random code(lenght is included in: *$characters*) 
 - `CaptchaSecurityImages()` main method of class, creates images and save code into session
 
