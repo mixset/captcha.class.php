@@ -1,19 +1,21 @@
-##captcha.class.php 
------------------
+# Simple PHP Captcha 
+
+----------------
 
 Script enables you to create a captcha code, which increase security of your website.
 To use this class, you need to modify your form by including `create.php` into `src=""` attribute in `<img>` code.
 
-How class is built?
------------------
+----------------
 
-Class has 6 method and 2 properities. 
+## Changelog
 
-Methods:
-- `__construct()` inits font using in captcha image 
-- `generateCode()` generate random code(lenght is included in: *$characters*) 
-- `CaptchaSecurityImages()` main method of class, creates images and save code into session
+[17.05.2015]
+* First version of script
 
-Properties:
-- `$config` defaultly contains font name and dir, where font is placed
-- `defaultFont` deafult dir with fonts 
+[05.03.2018]
+* Changed directory structure
+* Config data in placed in `src/config.php`
+* Added Helpers and CaptchaException classes
+* Added default directory with `Arial` font
+* Better errors management
+* Code simplification
