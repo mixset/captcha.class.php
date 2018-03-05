@@ -9,10 +9,10 @@ To use this class, you need to modify your form by including `create.php` into `
 
 ## Changelog
 
-[17.05.2015]
+[17.05.2015] v1.0
 * First version of script
 
-[05.03.2018]
+[05.03.2018] v1.1
 * Changed directory structure
 * Config data in placed in `src/config.php`
 * Added Helpers and CaptchaException classes
