@@ -19,12 +19,12 @@ return [
         /**
          * Width of captcha image
         */
-        'width' => 120,
+        'width' => 200,
 
         /**
          * Height of captcha image
         */
-        'height' => 40,
+        'height' => 70,
 
         /**
          * Number of characters, that are displayed in captcha

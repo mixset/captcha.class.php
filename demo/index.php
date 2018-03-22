@@ -6,14 +6,14 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="Dominik Ryńko">
-    <link href="assets/style.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
     <title>Captcha - demo</title>
 </head>
 <body>
 <form action="<?php echo htmlentities($_SERVER['PHP_SELF']) ?>" method="POST">
     <dl>
         <dt><label for="security_code"><img src="create.php"></label></dt>
-        <dd><input type="text" id="security_code" name="security_code" placeholder="Kod z obrazka"></dd>
+        <dd><input type="text" id="security_code" name="security_code" placeholder="Przepisz powyższy kod"></dd>
         <dt><input type="submit" value="Wyślij" name="send"></dt>
     </dl>
 </form>
@@ -31,5 +31,3 @@ if (isset($_POST['send'])) {
 ?>
 </body>
 </html>
-
-
