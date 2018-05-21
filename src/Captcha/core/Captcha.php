@@ -1,18 +1,19 @@
 <?php
 /**
- *
  * @author Dominik Ryńko <http://rynko.pl/>
  * @author Simon Jarvis
- * @version 1.0.0
  * @Link: http://www.white-hat-web-design.co.uk/articles/php-captcha.ph
  * @Link: http://rynko.pl/captcha-class-php-czy-jestes-czlowiekiem
- */
+*/
 
-namespace Captcha;
+namespace Captcha\Core;
 
-use CaptchaException;
-use Helpers;
+use Captcha\Exceptions\CaptchaException;
 
+/**
+ * Class Captcha
+ * @package Captcha\Core
+*/
 class Captcha
 {
     /**
@@ -28,14 +29,14 @@ class Captcha
     private $config = [];
 
     /**
+     * Captcha constructor.
+     *
      * @param $directory
      * @param $font
      * @param array $captcha
      *
-     * @throws \Exception
-     * @internal param $config
-     *
-     */
+     * @throws CaptchaException
+    */
     public function __construct($directory, $font, array $captcha)
     {
         if (empty($font) === true) {
@@ -45,7 +46,9 @@ class Captcha
             $ext = end($explodeFontName);
 
             if ($ext !== self::FONT_EXTENSION) {
-                throw new CaptchaException('Font\'s extension must be ' . self::FONT_EXTENSION);
+                throw new CaptchaException(
+                    'Font\'s extension must be ' . self::FONT_EXTENSION
+                );
             }
 
             $this->config['font'] = rtrim($directory, '/') . '/' . $font;
@@ -56,10 +59,12 @@ class Captcha
     }
 
     /**
-     * @internal param int $width
-     * @internal param int $height
-     * @internal param int $characters
-     */
+     * Display captcha image
+     *
+     * Save code to the session
+     *
+     * @return void
+    */
     public function generateCaptcha()
     {
         $code = Helpers::generateCode($this->config['characters']);
@@ -69,29 +74,50 @@ class Captcha
         // Font size will be 75% of the image height
         $fontSize = $height * 0.45;
         $image    = imagecreate($width, $height);
-        // Set the colours
 
+        // Set the colours
         $backgroundColor = imagecolorallocate($image, 255, 255, 255);
         $textColor       = imagecolorallocate($image, 46, 118, 126);
         $noiseColor      = imagecolorallocate($image, 118, 173, 201);
 
         // Generate random dots in background
-        for ($i = 0; $i < ($width * $height) / 10; $i ++)
-        {
-            imagefilledellipse($image, mt_rand(0, $width), mt_rand(0, $height), 1, 1, $noiseColor);
+        for ($i = 0; $i < ($width * $height) / 10; $i ++) {
+            imagefilledellipse(
+                $image,
+                mt_rand(0, $width),
+                mt_rand(0, $height),
+                1,
+                1,
+                $noiseColor
+            );
         }
 
         // Generate random lines in background
-        for ($i = 0; $i < ($width * $height) / 310; $i ++)
-        {
-            imageline($image, mt_rand(0, $width), mt_rand(0, $height), mt_rand(0, $width), mt_rand(0, $height), $noiseColor);
+        for ($i = 0; $i < ($width * $height) / 310; $i ++) {
+            imageline(
+                $image,
+                mt_rand(0, $width),
+                mt_rand(0, $height),
+                mt_rand(0, $width),
+                mt_rand(0, $height),
+                $noiseColor
+            );
         }
 
         // Create textbox and add text
         $textbox = imagettfbbox($fontSize, 0, $this->config['font'], $code);
         $x       = ($width - $textbox[4]) / 2;
         $y       = ($height - $textbox[5]) / 2;
-        imagettftext($image, $fontSize, 0, $x, $y, $textColor, $this->config['font'], $code);
+        imagettftext(
+            $image,
+            $fontSize,
+            0,
+            $x,
+            $y,
+            $textColor,
+            $this->config['font'],
+            $code
+        );
 
         // Output captcha image to browser
         header('Content-Type: image/jpeg');

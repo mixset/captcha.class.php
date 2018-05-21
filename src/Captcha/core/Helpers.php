@@ -1,5 +1,11 @@
 <?php
 
+namespace Captcha\Core;
+
+/**
+ * Class Helpers
+ * @package Captcha\Core
+*/
 class Helpers
 {
     /**
