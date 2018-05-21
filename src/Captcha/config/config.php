@@ -31,5 +31,4 @@ return [
         */
         'characters' => 4,
     ],
-
 ];

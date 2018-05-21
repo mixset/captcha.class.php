@@ -19,3 +19,8 @@ To use this class, you need to modify your form by including `create.php` into `
 * Added default directory with `Arial` font
 * Better errors management
 * Code simplification
+
+[21.05.2019] v1.1.1
+* Comments added
+* PSR fix
+* Better namespace naming
