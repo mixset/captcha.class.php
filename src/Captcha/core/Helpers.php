@@ -9,7 +9,7 @@ namespace Captcha\Core;
 class Helpers
 {
     /**
-     * Generate random charasters from given range
+     * Generate random characters from given range
      *
      * @param  int $characters
      * @return string $code
@@ -23,7 +23,7 @@ class Helpers
         $i = 0;
         while ($i < $characters) {
             $code .= substr($possible, mt_rand(0, strlen($possible) - 1), 1);
-            $i ++;
+            $i++;
         }
 
         return $code;
