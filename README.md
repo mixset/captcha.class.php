@@ -1,11 +1,7 @@
 # Simple PHP Captcha 
 
-----------------
-
 Script enables you to create a captcha code, which increase security of your website.
 To use this class, you need to modify your form by including `create.php` into `src=""` attribute in `<img>` code.
-
-----------------
 
 ## Changelog
 
