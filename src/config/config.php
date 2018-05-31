@@ -9,7 +9,7 @@ return [
     /**
      * Directory, where fonts are located
     */
-    'directory' => '../fonts/',
+    'directory' => 'assets/fonts/',
 
     /**
      * Image specification

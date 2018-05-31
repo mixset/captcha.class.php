@@ -1,10 +1,10 @@
 <?php
 
-namespace Captcha\Exceptions;
+namespace Mixset\Captcha\Exceptions;
 
 use Exception;
 
 class CaptchaException extends Exception
 {
-    // Captcha exception
+    // Custom exception here
 }
