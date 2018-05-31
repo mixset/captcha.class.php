@@ -16,7 +16,15 @@ To use this class, you need to modify your form by including `create.php` into `
 * Better errors management
 * Code simplification
 
-[21.05.2019] v1.1.1
+[21.05.201] v1.1.1
 * Comments added
 * PSR fix
 * Better namespace naming
+
+[31.05.2018] v1.2
+* Namespaces changed
+* Directory changed
+
+## ToDo
+* Add tests
+* Make config configurable
