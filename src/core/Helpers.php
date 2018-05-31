@@ -1,6 +1,6 @@
 <?php
 
-namespace Captcha\Core;
+namespace Mixset\Captcha\Core;
 
 /**
  * Class Helpers

@@ -6,9 +6,10 @@
  * @Link: http://rynko.pl/captcha-class-php-czy-jestes-czlowiekiem
 */
 
-namespace Captcha\Core;
+namespace Mixset\Captcha;
 
-use Captcha\Exceptions\CaptchaException;
+use Mixset\Captcha\Core\Helpers;
+use Mixset\Captcha\Exceptions\CaptchaException;
 
 /**
  * Class Captcha
@@ -41,21 +42,21 @@ class Captcha
     {
         if (empty($font) === true) {
             throw new CaptchaException('Font name cannot be empty');
-        } else {
-            $explodeFontName = explode('.', $font);
-            $ext = end($explodeFontName);
-
-            if ($ext !== self::FONT_EXTENSION) {
-                throw new CaptchaException(
-                    'Font\'s extension must be ' . self::FONT_EXTENSION
-                );
-            }
-
-            $this->config['font'] = rtrim($directory, '/') . '/' . $font;
-            $this->config['width'] = $captcha['width'];
-            $this->config['height'] = $captcha['height'];
-            $this->config['characters'] = $captcha['characters'];
         }
+
+        $explodeFontName = explode('.', $font);
+        $ext = end($explodeFontName);
+
+        if ($ext !== self::FONT_EXTENSION) {
+            throw new CaptchaException(
+                'Font\'s extension must be ' . self::FONT_EXTENSION
+            );
+        }
+
+        $this->config['font'] = rtrim($directory, '/') . '/' . $font;
+        $this->config['width'] = $captcha['width'];
+        $this->config['height'] = $captcha['height'];
+        $this->config['characters'] = $captcha['characters'];
     }
 
     /**
